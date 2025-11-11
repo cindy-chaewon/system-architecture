@@ -1,0 +1,10 @@
+node_modules
+.next/cache
+.next/server/app/**/*.map
+*.log
+.env*
+!.env.production
+prisma/dev.db
+Dockerfile
+.git
+.gitignore
