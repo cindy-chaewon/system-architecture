@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getTodos, clearCompleted } from "./actions";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
