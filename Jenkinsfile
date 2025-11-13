@@ -3,12 +3,11 @@ pipeline {
   options { timestamps(); disableConcurrentBuilds(); timeout(time: 20, unit: 'MINUTES') }
 
   environment {
-    // === 꼭 확인 ===
-    APP_NAME         = "todo-web"      // k8s Deployment.metadata.name
-    CONTAINER_NAME   = "web"           // Deployment spec.template.spec.containers[0].name
+    APP_NAME         = "todo-web"     
+    CONTAINER_NAME   = "web"           
     NAMESPACE        = "todo"
 
-    IMAGE_NAME       = "todo-app"      // minikube 도커에 빌드할 이미지 이름
+    IMAGE_NAME       = "todo-app"      
     MINIKUBE_PROFILE = "minikube"
     KUBECONFIG       = "/var/lib/jenkins/.kube/config"
     MINIKUBE_HOME    = "/var/lib/jenkins/.minikube"
@@ -16,7 +15,6 @@ pipeline {
   }
 
   triggers {
-    // GitHub Webhook을 이미 연결했다면 활성화
     githubPush()
   }
 

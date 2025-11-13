@@ -8,23 +8,28 @@ export default async function Page() {
   const todos = await getTodos();
 
   return (
-    <div className="space-y-4">
-      <div className="card">
+    <div className="space-y-5">
+      {/* 입력 카드 */}
+      <section className="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur">
         <TodoForm />
-      </div>
+      </section>
 
-      <div className="card">
-        <div className="mb-3 flex items-center justify-between">
+      {/* 리스트 카드 */}
+      <section className="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur">
+        <header className="mb-4 flex items-center justify-between">
           <h2 className="text-lg font-semibold">Tasks</h2>
           <form action={clearCompleted}>
-            <button className="btn btn-ghost text-sm" type="submit">
+            <button
+              className="inline-flex items-center justify-center rounded-lg px-3 py-1.5 text-xs font-medium text-slate-600 transition hover:bg-slate-100"
+              type="submit"
+            >
               완료 항목 지우기
             </button>
           </form>
-        </div>
+        </header>
 
         <TodoList todos={todos} />
-      </div>
+      </section>
     </div>
   );
 }

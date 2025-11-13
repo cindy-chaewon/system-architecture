@@ -2,7 +2,6 @@
 
 import { useState, useTransition } from "react";
 import { deleteTodo, renameTodo, toggleTodo } from "../actions";
-
 import type { Todo } from "@prisma/client";
 import ConfirmDelete from "./ConfirmDelete";
 
@@ -34,7 +33,7 @@ export default function TodoItem({ todo }: { todo: Todo }) {
       <label className="inline-flex items-center gap-2">
         <input
           type="checkbox"
-          className="h-4 w-4 accent-blue-600"
+          className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
           defaultChecked={todo.done}
           onChange={onToggle}
           disabled={pending}
@@ -44,7 +43,7 @@ export default function TodoItem({ todo }: { todo: Todo }) {
       <div className="flex-1">
         {editing ? (
           <input
-            className="input"
+            className="w-full rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-900 shadow-sm outline-none placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && onRename()}
@@ -53,7 +52,7 @@ export default function TodoItem({ todo }: { todo: Todo }) {
         ) : (
           <p
             className={`text-sm ${
-              todo.done ? "line-through text-gray-400" : ""
+              todo.done ? "text-slate-400 line-through" : "text-slate-800"
             }`}
           >
             {todo.title}
@@ -64,23 +63,29 @@ export default function TodoItem({ todo }: { todo: Todo }) {
       {editing ? (
         <div className="flex items-center gap-2">
           <button
-            className="btn btn-primary"
+            className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm transition hover:bg-blue-700 disabled:opacity-60"
             disabled={pending}
             onClick={onRename}
           >
             저장
           </button>
-          <button className="btn btn-ghost" onClick={() => setEditing(false)}>
+          <button
+            className="inline-flex items-center justify-center rounded-lg px-3 py-1.5 text-xs font-medium text-slate-600 transition hover:bg-slate-100"
+            onClick={() => setEditing(false)}
+          >
             취소
           </button>
         </div>
       ) : (
         <div className="flex items-center gap-2">
-          <button className="btn btn-ghost" onClick={() => setEditing(true)}>
+          <button
+            className="inline-flex items-center justify-center rounded-lg px-3 py-1.5 text-xs font-medium text-slate-600 transition hover:bg-slate-100"
+            onClick={() => setEditing(true)}
+          >
             수정
           </button>
           <button
-            className="btn btn-ghost text-red-600"
+            className="inline-flex items-center justify-center rounded-lg px-3 py-1.5 text-xs font-medium text-red-600 transition hover:bg-red-50"
             onClick={() => setConfirmOpen(true)}
           >
             삭제
