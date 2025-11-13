@@ -27,7 +27,7 @@ export default function TodoForm() {
         required
       />
       <button
-        className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-4 text-4xl font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60 "
+        className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-4 text-2xl font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60 "
         type="submit"
         disabled={pending}
       >
